@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Gift Helper</title>
+	<link href="css/main.css" rel="stylesheet"/>
+	
+</head>
+<body>
+
+	<div class="wrapper">
+		<!-- container for all pages -->
+		
+		<section data-role="page" id="people-list" style="display:block">
+        	<div id="modeltop">
+                <div id="modelleft"><img src="img/icons_People.png"></div>
+                <div id="modelcenter"><h2>People</h2></div>
+                <div id="modelright"><button class="btnAdd" id="btnAdd1">Add</button>
+                </div>
+            </div>
+            <div id="modelmessage">
+            <p class="details">
+				Here are all the people for which <em>you</em> buy gifts.
+			</p>
+            </div>
+
+            <div id="peoplelist"></div>
+		</section>
+		
+		<section data-role="page" id="occasion-list" style="display:none">
+			<div id="modeltop">
+                <div id="modelleft"><img src="img/icons_Occasions.png"></div>
+                <div id="modelcenter"><h2>Occasions</h2></div>
+                <div id="modelright"><button class="btnAdd" id="btnAdd2">Add</button>
+                </div>
+            </div>
+            <div id="modelmessage">
+            <p class="details">
+				Here is the list of occasions when <em>you</em> buy gifts.
+			</p>
+            </div>
+            
+			<div id="occasionlist"></div>
+            <!--<ul data-role="listview" id="occasionlist">
+			</ul>-->
+		</section>
+		
+		<section data-role="page" id="gifts-for-person" style="display:none">
+			<div id="modeltop">
+                <div id="modelleft"><img src="img/icons_Gift Ideas.png"></div>
+                <div id="modelcenter"><h2>Gift Ideas</h2></div>
+                <div id="modelright"><button class="btnAdd" id="btnAdd3">Add</button>
+                </div>
+            </div>
+            <div id="modelmessage2">
+            <!--
+            <p class="details">
+				Here are all the gifts ideas for <span>PERSON</span> for all occasions.
+			</p>
+            -->
+            </div>
+
+			<div id="giftpeoplelist"></div>
+            <!--<ul data-role="listview" id="giftpeople"></ul>
+				-->
+			</ul>
+		</section>
+		
+		<section data-role="page" id="gifts-for-occasion" style="display:none">
+			<div id="modeltop">
+                <div id="modelleft"><img src="img/icons_Gift Ideas.png"></div>
+                <div id="modelcenter"><h2>Gift Ideas</h2></div>
+                <div id="modelright"><button class="btnAdd" id="btnAdd4">Add</button>
+                </div>
+            </div>
+            <div id="modelmessage1">
+            <!--
+            <p class="details">
+				Here are all the gifts ideas for <span>OCCASION</span> for all people.
+			</p>
+            -->
+            </div>
+
+			<div id="giftocclist"></div>
+            <!--<ul data-role="listview" id="giftpeople"></ul>
+				-->
+			</ul>
+		</section>
+        
+        <div data-role="footer" id="plainfooter">
+            <div id="modelleft"><h3>Paul Harvey &copy;2015</h3></div>
+            <div id="modelright">&nbsp;</div>
+        </div>
+         <div data-role="footer" id="backfooter">
+            <div id="modelleft"><h3>Paul Harvey &copy;2015</h3></div>
+            <div id="modelright"><button class="btnBack" id="btnBack">Back</button></div>
+        </div>       
+        
+	</div>
+	
+	<!-- always display the overlay between a page and modal -->
+	<div data-role="overlay">&nbsp;</div>
+	
+	<!-- modal for adding an entry to person or occasion table -->
+	<div data-role="modal" id="add-person">
+		<h3>Title (new person )</h3>
+		<form>
+			<div class="formBox">
+				<input type="text" id="new-per" value="" placeholder="" class=""/>
+			</div>
+			<div class="formBox">
+				<input type="button" id="CancelP" class="btnCancel" value="CANCEL" />
+				<input type="button" id="SaveP" class="btnSave" value="SAVE" />
+			</div>
+		</form>	
+	</div>
+	
+    	<div data-role="modal" id="add-occasion">
+		<h3>Title (new occasion)</h3>
+		<form>
+			<div class="formBox">
+				<input type="text" id="new-occ" value="" placeholder="" class=""/>
+			</div>
+			<div class="formBox">
+				<input type="button" id="CancelO" class="btnCancel" value="CANCEL" />
+				<input type="button" id="SaveO" class="btnSave" value="SAVE" />
+			</div>
+		</form>	
+	</div>
+    
+	<!-- modal for adding an entry to gift idea table. Requires a person or occasion plus the idea -->
+	<div data-role="modal" id="add-gift-person">
+		<h3>Title (new gift for person)</h3>
+		<form>
+			<div class="formBox">
+				<select id="list-per-occ">
+					<!--<option value="0">Choose one</option>-->
+					<!-- list of options built from person list or occasion list -->
+				</select>
+			</div>
+			<div class="formBox">
+				<input type="text" id="new-idea-person" value="" placeholder="" class=""/>
+			</div>
+			<div class="formBox">
+				<input type="button" id="CancelGP" class="btnCancel" value="CANCEL" />
+				<input type="button" id="SaveGP" class="btnSave" value="SAVE" />
+			</div>
+		</form>	
+	</div>
+    
+    <div data-role="modal" id="add-gift-occ">
+		<h3>Title (new gift for occasion)</h3>
+		<form>
+			<div class="formBox">
+				<select id="list-people">
+					<!--<option value="0">Choose one</option>-->
+					<!-- list of options built from person list or occasion list -->
+				</select>
+			</div>
+			<div class="formBox">
+				<input type="text" id="new-idea-gift" value="" placeholder="" class=""/>
+			</div>
+			<div class="formBox">
+				<input type="button" id="CancelGO" class="btnCancel" value="CANCEL" />
+				<input type="button" id="SaveGO" class="btnSave" value="SAVE" />
+			</div>
+		</form>	
+	</div>
+    
+        <div data-role="modal" id="delete-confirmation">
+		<h3>Delete</h3>
+		<form>
+			<div class="formBox">
+				<p>Do you wish to delete?</p>
+			</div>
+			<div class="formBox">
+				<input type="button" id="CancelDel" class="btnCancel" value="CANCEL" />
+				<input type="button" id="Delete" class="btnDelete" value="DELETE" />
+			</div>
+		</form>	
+	</div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/hammer.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
